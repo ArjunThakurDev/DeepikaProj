@@ -37,6 +37,15 @@ namespace ChargerInfo.API
             services.AddScoped<IChargerRepository, ChargerRepository>();
             services.AddScoped<ISessionRepository, SessionRepository>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyCorsSet",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200");
+                    });
+            });
+
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -66,6 +75,8 @@ namespace ChargerInfo.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            app.UseCors("MyCorsSet");
             app.UseMvc();
             app.UseStatusCodePages();
             chargerInfoContext.EnsureSeedDataForContext();

@@ -1,0 +1,25 @@
+<div>
+  <button class='btn btn-primary' (click)='refreshSession()'>
+    Refresh Sessions
+  </button>
+  <table class='table' *ngIf='_sessionList && _sessionList.length'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>SessionStartTime</th>
+        <th>SessionStopTime</th>
+        <th>Status</th>
+        <th>ChargerId</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let sess of _sessionList'>
+        <td>{{ sess.id}}</td>
+        <td>{{ sess.sessionStartTime }}</td>
+        <td>{{ sess.sessionStopTime}}</td>
+        <td>{{ sess.status}}</td>
+        <td>{{ sess.chargerId}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
