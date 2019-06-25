@@ -1,0 +1,47 @@
+<div>
+    <h1> Add a new Charger </h1>
+  </div>
+  <div>
+  <form >
+    <div>
+     
+      <div class='form-group'>
+        <div class='col-md-2'>Enter Charger Station Type </div>
+        <input type='text' class="form-control" id="sessionStartTime" required [(ngModel)]="_addCharger.chargerStationType"
+          name="chargerStationType"   #chargerStationType="ngModel"/>
+          <div [hidden]="chargerStationType.valid || chargerStationType.pristin" class="alert alert-danger" >
+              Charger Station Type is Required
+          </div>
+      </div>
+  
+      <br>
+  
+      <div class='form-group'>
+        <div class='col-md-2'>Enter Power In Volt </div>
+        <input type='text' class="form-control" required [(ngModel)]="_addCharger.powerInVolt" name="powerInVolt"
+          #powerInVolt="ngModel" />
+        <div [hidden]="powerInVolt.valid || powerInVolt.pristin" class="alert alert-danger">
+          Power is Required
+        </div>
+      </div>
+      </div>
+  
+      <br>
+      <br>
+  
+      <div>
+        <button class='btn btn-primary' (click)="addNewCharger()">
+          Add
+        </button>
+       <!---- <button class='btn btn-primary' [disabled]="!addForm.form.valid">
+          Submit
+        </button>-->
+        <button class='btn btn-primary' (click)='OnBack()'>
+          Back
+        </button>
+      </div>
+  </form>
+  </div>
+  
+  <div *ngIf="chargerId" [ngClass] = "'success'"> {{chargerId}} is Added </div>
+  <div *ngIf="error" [ngClass] = "'error'"> {{error}} </div> 

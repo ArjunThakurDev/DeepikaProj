@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace ChargerInfo.API.Services
@@ -25,6 +26,7 @@ namespace ChargerInfo.API.Services
 
         public Session AddSession(Session session)
         {
+            
             _context.sessions.Add(session);
             _context.SaveChanges();
             return session;

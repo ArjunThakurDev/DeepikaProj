@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <button class='btn btn-primary' (click)='getChargers()'>
+      Get Chargers
+    </button>
+  </div>
+  <nav class='navbar navbar-expand navbar-dark bg-info'>
+    <ul class='nav-nav-pills'>
+
+      <li> <a class='nav-link' [routerLink]="['/addcharger']">Add Charger</a></li>
+      <li><a class='nav-link' [routerLink]="['/updatecharger']">Update Charger</a></li>
+      <li><a class='nav-link' [routerLink]="['/deletecharger']">Delete Charger</a></li>
+    </ul>
+  </nav>
+</div>
+ <div class='container'>
+    <router-outlet></router-outlet>
+  </div>
+  <div>
+  <table class='table' *ngIf='_chargers && _chargers.length'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Charger Station Type</th>
+        <th>Power In Volt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let charger of _chargers'>
+        <td>
+          <a [routerLink] ="['/chargers', charger.id]"> {{charger.id}}</a> 
+        </td>
+        <td>{{ charger.chargerStationType}}</td>
+        <td>{{ charger.powerInVolt}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+

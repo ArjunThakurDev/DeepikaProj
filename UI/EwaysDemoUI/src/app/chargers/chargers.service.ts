@@ -1,29 +1,25 @@
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { Observable, throwError } from "rxjs";
+import { Chargers } from "./chargers";
+import { tap, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
-import { ChargeSession } from './charge-session';
 
-
-@Injectable({
-  providedIn: 'root'
+@Injectable(
+{
+  providedIn : 'root'
 })
-export class ChargeSessionServiceService {
+export class ChargersService
+{
+    private getChargerURL = "https://localhost:5001/api/chargerInfo";
+   constructor(private http : HttpClient){}
 
-  private sessionUrl = 'https://localhost:5001/api/session';
-
-  constructor(private http: HttpClient) { }
-
-  getSessions(): Observable<ChargeSession[]> {
-    return this.http.get<ChargeSession[]>(this.sessionUrl).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
-      catchError(this.handleError)
-    );
-  }
-
-  
-
-  private handleError(err: HttpErrorResponse) {
+   getChargers() : Observable<Chargers[]>
+   {
+       return this.http.get<Chargers[]>(this.getChargerURL).pipe(
+           tap(data => console.log("ALL" + JSON.stringify(data))),
+           catchError(this.handleError));
+   }
+   private handleError(err: HttpErrorResponse) {
     // in a real worlng d app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
     let errorMessage = '';

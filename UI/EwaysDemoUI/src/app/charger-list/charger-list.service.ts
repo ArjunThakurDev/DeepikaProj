@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { ChargeSession } from './charge-session';
+import { Chargers } from '../chargers/chargers';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ChargeSessionServiceService {
+export class ChargerListService {
 
-  private sessionUrl = 'https://localhost:5001/api/session';
+  private chargerListUrl = 'https://localhost:5001/api/chargerInfo/';
 
   constructor(private http: HttpClient) { }
 
-  getSessions(): Observable<ChargeSession[]> {
-    return this.http.get<ChargeSession[]>(this.sessionUrl).pipe(
+  getChargersList(chargerId : number): Observable<Chargers> {
+    return this.http.get<Chargers>(this.chargerListUrl + chargerId ).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

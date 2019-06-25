@@ -12,12 +12,15 @@ namespace ChargerInfo.API.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
         public DateTime SessionStartTime { get; set; }
         public DateTime SessionStopTime { get; set; }
+        [Required]
         public string Status { get; set; }
 
         
         //Reference
+        [Required]
         public int ChargerId { get; set; }
         public Charger Charger { get; set; }
     }

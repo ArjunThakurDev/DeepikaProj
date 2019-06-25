@@ -1,3 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-charge-session-list></app-charge-session-list>
+<nav class='navbar navbar-expand navbar-dark bg-info'>
+ <ul class='nav nav-pills'>
+        <li><a class='nav-link' [routerLink]="['/home']">Home</a></li>
+     <li><a class='nav-link'  [routerLink]="['/sessions']">Get Sessions List</a></li>
+     <li><a class='nav-link' [routerLink]="['/chargers']">Chargers</a></li>
+ </ul>
+</nav>
+<div class='container'>
 <router-outlet></router-outlet>
+</div>
+
+
+<!--<app-charge-session-list></app-charge-session-list>-->
+
