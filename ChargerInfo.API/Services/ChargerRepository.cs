@@ -22,5 +22,32 @@ namespace ChargerInfo.API.Services
         {
             return _context.chargers.FirstOrDefault(c => c.Id == chargerId);
         }
+        public Charger AddCharger(Charger charger)
+        {
+
+            _context.chargers.Add(charger);
+            _context.SaveChanges();
+            return charger;
+        }
+
+        public Charger UpdateCharger(Charger charger)
+        {
+            var chargerFromDb = GetCharger(charger.Id);
+
+            chargerFromDb.ChargerStationType = charger.ChargerStationType;
+            chargerFromDb.PowerInVolt = charger.PowerInVolt;
+            _context.chargers.Update(chargerFromDb);
+            _context.SaveChanges();
+            return charger;
+        }
+
+        public void DeleteCharger(int chargerId)
+        {
+            var chargerFromDb = GetCharger(chargerId);
+            _context.chargers.Remove(chargerFromDb);
+            _context.SaveChanges();
+
+
+        }
     }
 }

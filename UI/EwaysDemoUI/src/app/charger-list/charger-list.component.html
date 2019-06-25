@@ -1,0 +1,35 @@
+<div class='card' *ngIf='_chargerList && _chargerList.length'>
+  <div class='card-header'>
+    Charger Details : {{_chargerList.chargerStationType}}
+  </div>
+</div>
+
+    <div>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Charger Station Type</th>
+          <th>Power In Volt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+             {{_chargerList.id}}
+          </td>
+          <td>{{ _chargerList.chargerStationType}}</td>
+          <td>{{ _chargerList.powerInVolt}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+  <button class='btn btn-primary' (click)='OnBack()'>
+      Back
+    </button>
+  </div>
+  
+  
+  
+  

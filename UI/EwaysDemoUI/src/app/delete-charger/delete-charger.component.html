@@ -1,0 +1,30 @@
+<div>
+    <h1> Delete Charger </h1>
+  </div>
+  <div>
+  <form >
+    <div>
+      <div class="form-group">
+        <div class='col-md-2'>Enter Charger Id </div>
+        <input type='text' class="form-control" id="chargerId" required [(ngModel)]="_deleteCharger.id"
+          name="chargerId" #chargerId="ngModel" />
+          <div [hidden]="chargerId.valid || chargerId.pristin" class="alert alert-danger">
+              Charger Id is Required
+          </div>
+      </div>
+      </div>
+  
+      <br>
+      <br>
+  
+      <div>
+        <button class='btn btn-primary' (click)="deleteCharger()">
+          Delete
+        </button>
+        <button class='btn btn-primary' (click)='OnBack()'>
+          Back
+        </button>
+      </div>
+    </form>
+  </div>
+

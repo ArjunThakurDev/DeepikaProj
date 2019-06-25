@@ -7,5 +7,9 @@ namespace ChargerInfo.API.Services
     {
         IEnumerable<Charger> GetChargers();
         Charger GetCharger(int chargerId);
+        Charger AddCharger(Charger charger);
+        Charger UpdateCharger(Charger charger);
+        void DeleteCharger(int chargerId);
+
     }
 }

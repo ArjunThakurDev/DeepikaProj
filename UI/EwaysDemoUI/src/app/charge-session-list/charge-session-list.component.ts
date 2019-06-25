@@ -3,7 +3,7 @@ import { ChargeSessionServiceService } from './charge-session-service.service';
 import { ChargeSession } from './charge-session';
 
 @Component({
-  selector: 'app-charge-session-list',
+  //selector: 'app-charge-session-list',
   templateUrl: './charge-session-list.component.html',
   styleUrls: ['./charge-session-list.component.css']
 })

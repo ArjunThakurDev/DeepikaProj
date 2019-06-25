@@ -2,6 +2,22 @@
   <button class='btn btn-primary' (click)='refreshSession()'>
     Refresh Sessions
   </button>
+</div>
+<div>
+  <nav class='navbar navbar-expand navbar-dark bg-info'>
+    <ul class='nav-nav-pills'>
+
+      <li> <a class='nav-link' [routerLink]="['/addsession']">Add Session</a></li>
+      <li><a class='nav-link' [routerLink]="['/stopsession']">Stop Session</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+ <div class='container'>
+    <router-outlet></router-outlet>
+  </div>
+  <div>
   <table class='table' *ngIf='_sessionList && _sessionList.length'>
     <thead>
       <tr>
@@ -14,7 +30,9 @@
     </thead>
     <tbody>
       <tr *ngFor='let sess of _sessionList'>
-        <td>{{ sess.id}}</td>
+        <td>
+          {{ sess.id}}
+        </td>
         <td>{{ sess.sessionStartTime }}</td>
         <td>{{ sess.sessionStopTime}}</td>
         <td>{{ sess.status}}</td>
@@ -22,4 +40,10 @@
       </tr>
     </tbody>
   </table>
+
+
 </div>
+
+
+
+

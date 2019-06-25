@@ -1,0 +1,54 @@
+<div>
+    <h1> Update Charger </h1>
+  </div>
+  <div>
+  <form >
+    <div>
+      <div class="form-group">
+        <div class='col-md-2'>Enter Charger Id </div>
+        <input type='text' class="form-control" id="chargerId" required [(ngModel)]="_updateCharger.id"
+          name="chargerId" #chargerId="ngModel" />
+          <div [hidden]="chargerId.valid || chargerId.pristin" class="alert alert-danger">
+              Charger Id is Required
+          </div>
+      </div>
+  
+      <br>
+      <div class='form-group'>
+        <div class='col-md-2'>Enter Charger Station Type </div>
+        <input type='text' class="form-control" id="chargerStationType"  [(ngModel)]="_updateCharger.chargerStationType"
+          name="chargerStationType" #chargerStationType="ngModel"/>
+          <div [hidden]="chargerStationType.valid || chargerStationType.pristin" class="alert alert-danger">
+              Charge Station Type is Required
+          </div>
+      </div>
+  
+      <br>
+  
+      <div class='form-group'>
+        <div class='col-md-2'>Enter Power in Volt </div>
+        <input type='text' class="form-control"  [(ngModel)]="_updateCharger.powerInVolt"
+         name="powerInVolt" #powerInVolt="ngModel"/>
+         <div [hidden]="powerInVolt.valid || powerInVolt.pristin" class="alert alert-danger">
+            Power In Volt is Required
+        </div>
+      </div>
+      </div>
+  
+      <br>
+      <br>
+  
+      <div>
+        <button class='btn btn-primary' (click)="updateCharger()">
+          Update
+        </button>
+       <!---- <button class='btn btn-primary' [disabled]="!addForm.form.valid">
+          Submit
+        </button>-->
+        <button class='btn btn-primary' (click)='OnBack()'>
+          Back
+        </button>
+      </div>
+  </form>
+  </div>
+
