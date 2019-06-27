@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders ,HttpResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ChargeSession } from '../charge-session-list/charge-session';
 import { catchError} from 'rxjs/operators';
+
 //import 'rxjs/add/operator/catch';
 //import 'rxjs/add/operator/map';
 //import 'rxjs/add/operator/catchError';

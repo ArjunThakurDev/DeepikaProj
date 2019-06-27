@@ -1,4 +1,5 @@
 export class ChargeSession {
+ 
   id: number;
   sessionStartTime: string;
   sessionStopTime: string;

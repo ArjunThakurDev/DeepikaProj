@@ -2,55 +2,62 @@
   <h1> Add a new Session </h1>
 </div>
 <div>
-<form >
-  <div>
-    <div class="form-group">
-      <div class='col-md-2'>Enter Charger Id </div>
-      <input type='text' class="form-control" id="chargerId" required [(ngModel)]="_addSession.chargerId"
-        name="chargerId" #chargerId="ngModel" />
-        <div [hidden]="chargerId.valid || chargerId.pristin" class="alert alert-danger">
-          Charger Id is Required
-        </div>
-    </div>
-
-    <br>
-    <div class='form-group'>
-      <div class='col-md-2'>Enter Session Start Time </div>
-      <input type='text' class="form-control" id="sessionStartTime" required [(ngModel)]="_addSession.sessionStartTime"
-        name="sessionStartTime"   #startTime="ngModel"/>
-        <div [hidden]="startTime.valid || startTime.pristin" class="alert alert-danger" >
-          Start Time is Required
-        </div>
-    </div>
-
-    <br>
-
-    <div class='form-group'>
-      <div class='col-md-2'>Enter Status </div>
-      <input type='text' class="form-control" required [(ngModel)]="_addSession.Status" name="Status"
-        #status1="ngModel" />
-      <div [hidden]="status1.valid || status1.pristin" class="alert alert-danger">
-        Status is Required
-      </div>
-    </div>
-    </div>
-
-    <br>
-    <br>
-
+  <form [formGroup]= "addForm">
     <div>
-      <button class='btn btn-primary' (click)="addNewSession()">
-        Start
-      </button>
-     <!---- <button class='btn btn-primary' [disabled]="!addForm.form.valid">
+      <div class="form-group">
+        <div class='col-md-2'>Enter Charger Id </div>
+        <input type='text' class='form-control' id="chargerId" formControlName='chargerId' required>
+        <div *ngIf="chargerId.invalid && (chargerId.dirty || chargerId.touched) " class="alert alert-danger">
+          <div *ngIf="chargerId.errors.required">
+            Charger Id is required.
+          </div>
+        </div>
+        </div>
+
+        <br>
+        <div class='form-group'>
+          <div class='col-md-2'>Enter Session Start Time </div>
+         <input type='text' class='form-control' id='sessionStartTime' formControlName="sessionStartTime" required>
+         <div *ngIf="sessionStartTime.invalid && (sessionStartTime.dirty || sessionStartTime.touched)" class="alert alert-danger">
+           <div *ngIf="sessionStartTime.errors.required">
+             Session Start Time is required.
+         </div>
+        </div>
+        </div>
+
+
+        <br>
+
+        <div class='form-group'>
+          <div class='col-md-2'>Enter Status </div>
+          <input type="text" id="status" class='form-control' formControlName='status' required>
+          <div *ngIf="status.invalid && (status.dirty || status.touched)" class="alert alert-danger">
+            <div *ngIf="status.errors.required">
+              Status is required
+            </div>
+            <div *ngIf="status.errors.forbiddenStatus">
+                status value should be Started
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <br>
+
+      <div>
+        <button class='btn btn-primary' (click)="addNewSession()">
+          Start
+        </button>
+        <!---- <button class='btn btn-primary' [disabled]="!addForm.form.valid">
         Submit
       </button>-->
-      <button class='btn btn-primary' (click)='OnBack()'>
-        Back
-      </button>
-    </div>
-</form>
+        <button class='btn btn-primary' (click)='OnBack()'>
+          Back
+        </button>
+      </div>
+  </form>
 </div>
 
-<div *ngIf="sessionId" [ngClass] = "'success'"> {{sessionId}} is Started </div>
-<div *ngIf="error" [ngClass] = "'error'"> {{error}} </div> 
+<div *ngIf="sessionId" [ngClass]="'success'"> {{sessionId}} is Started </div>
+<div *ngIf="error" [ngClass]="'error'"> {{error}} </div>
