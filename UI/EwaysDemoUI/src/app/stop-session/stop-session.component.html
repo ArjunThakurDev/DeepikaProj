@@ -2,13 +2,13 @@
     <h1> Stop Session </h1>
   </div>
   <div>
-  <form >
+  <form [formGroup]= "stopForm" >
     <div>
       <div class="form-group">
         <div class='col-md-2'>Enter Session Id </div>
-        <input type='text' class="form-control" id="sessionId" required [(ngModel)]="_stopSession.id"
-          name="sessionId" #sessionId="ngModel" />
-          <div [hidden]="sessionId.valid || sessionId.pristin" class="alert alert-danger">
+        <input type='text' class="form-control"  required formControlName='id'/>
+        <div *ngIf="id.invalid && (id.dirty || id.touched )" class="alert alert-danger">
+          <div *ngIf="id.errors.required">
             Session Id is Required
           </div>
       </div>
@@ -16,25 +16,33 @@
       <br>
       <div class='form-group'>
         <div class='col-md-2'>Enter Session Stop Time </div>
-        <input type='text' class="form-control" id="sessionStopTime" required [(ngModel)]="_stopSession.sessionStopTime"
-          name="sessionStopTime"   #stopTime="ngModel"/>
-          <div [hidden]="stopTime.valid || stopTime.pristin" class="alert alert-danger" >
+       
+        <input type='text' class='form-control' id="sessionStopTime"  formControlName="sessionStopTime" required>
+          <div *ngIf="sessionStopTime.invalid && ( sessionStopTime.dirty || sessionStopTime.touched)" class="alert alert-danger">
+            <div *ngIf="sessionStopTime.errors.required">
             Stop Time is Required
           </div>
+      </div>
       </div>
   
       <br>
   
       <div class='form-group'>
         <div class='col-md-2'>Enter Status </div>
-        <input type='text' class="form-control" required [(ngModel)]="_stopSession.Status" name="Status"
-          #status1="ngModel" />
-        <div [hidden]="status1.valid || status1.pristin" class="alert alert-danger">
-          Status is Required
+        <div>
+          <select class="form-control" id="status" required formControlName="status">
+            <option>{{_status}}</option>
+          </select>
         </div>
+        <div *ngIf="status.invalid && (status.dirty || status.touched)" class="alert alert-danger">
+          <div *ngIf="status.errors.required">
+            Status is Required
+          </div>
+          </div>
       </div>
       </div>
-  
+      </div>
+ 
       <br>
       <br>
   
@@ -42,12 +50,12 @@
         <button class='btn btn-primary' (click)="stopSession()">
           Stop
         </button>
-       <!---- <button class='btn btn-primary' [disabled]="!addForm.form.valid">
-          Submit
-        </button>-->
         <button class='btn btn-primary' (click)='OnBack()'>
           Back
         </button>
       </div>
   </form>
   </div>
+
+<div *ngIf="sessionId" [ngClass]="'success'" > {{sessionId}} is Stopped </div>
+<div *ngIf="error" [ngClass]="'error'"> {{error}} </div>

@@ -7,7 +7,7 @@
       <div class="form-group">
         <div class='col-md-2'>Enter Charger Id </div>
         <input type='text' class='form-control' id="chargerId" formControlName='chargerId' required>
-        <div *ngIf="chargerId.invalid && (chargerId.dirty || chargerId.touched) " class="alert alert-danger">
+        <div *ngIf="chargerId.invalid && (chargerId.dirty || chargerId.touched)" class="alert alert-danger">
           <div *ngIf="chargerId.errors.required">
             Charger Id is required.
           </div>
@@ -30,7 +30,17 @@
 
         <div class='form-group'>
           <div class='col-md-2'>Enter Status </div>
-          <input type="text" id="status" class='form-control' formControlName='status' required>
+          <div>
+          <select class = 'form-control' id = "status" formControlName='status' required >
+          <option>{{_status}}</option>
+          </select>
+        </div>
+        <div *ngIf="status.invalid && (status.dirty || status.touched)" class="alert alert-danger">
+          <div *ngIf="status.errors.required">
+            Status is required
+          </div>
+          </div>
+         <!---- <input type="text" id="status" class='form-control' formControlName='status' required>
           <div *ngIf="status.invalid && (status.dirty || status.touched)" class="alert alert-danger">
             <div *ngIf="status.errors.required">
               Status is required
@@ -38,7 +48,7 @@
             <div *ngIf="status.errors.forbiddenStatus">
                 status value should be Started
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
 

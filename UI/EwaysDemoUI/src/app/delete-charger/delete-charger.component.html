@@ -2,14 +2,15 @@
     <h1> Delete Charger </h1>
   </div>
   <div>
-  <form >
+  <form [formGroup]="deleteForm">
     <div>
       <div class="form-group">
         <div class='col-md-2'>Enter Charger Id </div>
-        <input type='text' class="form-control" id="chargerId" required [(ngModel)]="_deleteCharger.id"
-          name="chargerId" #chargerId="ngModel" />
-          <div [hidden]="chargerId.valid || chargerId.pristin" class="alert alert-danger">
+        <input type='text' class="form-control" id="chargerId" required formControlName="id">
+          <div *ngIf="id.invalid && (id.touched || id.dirty)" class="alert alert-danger">
+            <div *ngIf="id.errors.required">
               Charger Id is Required
+            </div>
           </div>
       </div>
       </div>

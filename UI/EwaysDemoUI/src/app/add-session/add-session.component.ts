@@ -16,6 +16,7 @@ export class AddSessionComponent implements OnInit {
   private sessionId: number;
   private error: String = '';
   addForm : FormGroup;
+  _status : string = 'Started';
   constructor(private route: Router,
     private addSessionService: AddSessionService) { }
 
@@ -23,16 +24,18 @@ export class AddSessionComponent implements OnInit {
     this.addForm = new FormGroup(
       {
         'chargerId': new FormControl(this._addSession.chargerId,Validators.required),
-        'sessionStartTime': new FormControl(this._addSession.sessionStartTime),
-        'status': new FormControl(this._addSession.status,[Validators.required,statusValidator])
+        'sessionStartTime': new FormControl(this._addSession.sessionStartTime,Validators.required),
+        'status': new FormControl(this._addSession.status,Validators.required)
       });
+      console.log("form" + this.addForm.value);
+      console.log("session " + this._addSession);
     }
     
      get chargerId() { return this.addForm.get('chargerId'); }
 
       get sessionStartTime() { return this.addForm.get('sessionStartTime'); }
     
-      get status() { return this.addForm.get('status'); }
+      get status() { return this.addForm.get('status');}
     
 
   OnBack(): void {
@@ -40,7 +43,9 @@ export class AddSessionComponent implements OnInit {
   }
 
   addNewSession(): void {
-    this.addSessionService.addNewSession(this._addSession).subscribe(
+    console.log(this.addForm.value);
+    console.log(this._addSession);
+    this.addSessionService.addNewSession(this.addForm.value).subscribe(
       sess => {
         this._addSession = sess;
         this.reset();
